@@ -1,2 +1,2 @@
 # tgbot-on-nodejs
-Simple telegram bot on bash
+Simple telegram bot on nodejs

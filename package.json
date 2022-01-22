@@ -1,0 +1,14 @@
+{
+  "name": "tgbot-on-nodejs",
+  "version": "0.0.1",
+  "description": "Simple telegram bot on nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergey Denisov",
+  "license": "GPL3",
+  "dependencies": {
+    "telegraf": "^4.6.0"
+  }
+}
