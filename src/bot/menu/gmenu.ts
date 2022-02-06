@@ -18,42 +18,42 @@ export enum MenuLevel {
 }
 
 export interface IGlobalMenu {
-    setLevel(lvl: MenuLevel): void
-    getLevel(): MenuLevel
-    back(): void
+    setLevel(user: string, lvl: MenuLevel): void
+    getLevel(user: string): MenuLevel
+    back(user: string): void
 }
 
 export class GlobalMenu implements IGlobalMenu {
-    private curLevel: MenuLevel = MenuLevel.MAIN
+    private curLevel: Map<string, MenuLevel> = new Map<string, MenuLevel>()
 
-    public setLevel(lvl: MenuLevel) {
-        this.curLevel = lvl
+    public setLevel(user: string, lvl: MenuLevel) {
+        this.curLevel.set(user, lvl)
     }
 
-    public getLevel(): MenuLevel {
-        return this.curLevel
+    public getLevel(user: string): MenuLevel {
+        return <MenuLevel>this.curLevel.get(user)
     }
 
-    public back() {
-        switch (this.getLevel()) {
+    public back(user: string) {
+        switch (this.getLevel(user)) {
             case MenuLevel.METEO:
-                this.setLevel(MenuLevel.MAIN)
+                this.setLevel(user, MenuLevel.MAIN)
                 break
 
             case MenuLevel.METEO_SENSOR:
-                this.setLevel(MenuLevel.METEO)
+                this.setLevel(user, MenuLevel.METEO)
                 break
 
             case MenuLevel.METEO_MONITOR:
-                this.setLevel(MenuLevel.METEO)
+                this.setLevel(user, MenuLevel.METEO)
                 break
 
             case MenuLevel.SECURITY:
-                this.setLevel(MenuLevel.MAIN)
+                this.setLevel(user, MenuLevel.MAIN)
                 break
 
             case MenuLevel.SECURITY_SENSOR:
-                this.setLevel(MenuLevel.SECURITY)
+                this.setLevel(user, MenuLevel.SECURITY)
                 break
         }
     }
