@@ -11,7 +11,7 @@ import { readFileSync } from 'fs'
 
 export type Settings = {
     token: string
-    users: number[]
+    users: string[]
 }
 
 export interface IConfigs {
